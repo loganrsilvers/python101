@@ -3,14 +3,15 @@ def midi_to_freq(num):
     return 440 * (2 ** ((num - 69) / 12))  
 
 #takes input from user
-midi_numbers = []
+numbers = []
 while True:
-    midi_input = input("Enter MIDI number (or 'done' to finish): ")
-    if midi_input.lower() == "done":
+    myinput = input("Enter MIDI number (or 'done' to finish): ")
+    if myinput == "done":
         break
-    midi_num = int(midi_input)
-    midi_numbers.append(midi_num)
+    else:
+        item = int(myinput)
+        numbers.append(item)
 
 print("Frequencies:")
-for num in midi_numbers:
+for num in numbers:
     print(midi_to_freq(num))
