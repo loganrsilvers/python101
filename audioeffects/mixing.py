@@ -24,4 +24,6 @@ def mix_down(audio_file1, audio_file2):
     return mixed_data, samplerate1
 # Play the resulting waveform using the sounddevice module.
 mixed_audio, samplerate = mix_down('audio1.wav', 'audio2.wav')
-sd.play(mixed_audio, samplerate)
+
+# Export the resulting waveform as a WAV file
+sf.write('mixed_output.wav', mixed_audio, samplerate)

@@ -8,15 +8,16 @@ Import a sound file and this impulse response  Download this impulse response(do
 #Import a sound file and 
 import soundfile as sf
 import sounddevice as sd
+import numpy as np
 
 
 def fade_in_out(audio_file):
     data, samplerate = sf.read(audio_file)
     num_samples = data.shape[0]
-    # apply a 1 second fade in 
-    fade_in_samples = int(samplerate * 1)
-    # and a 1.5 second fade out. 
-    fade_out_samples = int(samplerate * 1.5) 
+    # apply a 5 second fade in 
+    fade_in_samples = int(samplerate * 5)
+    # and a 5 second fade out. 
+    fade_out_samples = int(samplerate * 5) 
 
     # Create fade in and fade out envelopes
     fade_in_envelope = np.linspace(0, 1, fade_in_samples)
@@ -29,8 +30,7 @@ def fade_in_out(audio_file):
     data[-fade_out_samples:] *= fade_out_envelope[:, np.newaxis]
 
     return data, samplerate
-# Play the resulting waveform 
+# export the resulting waveform 
 # using the sounddevice module.
-audio_data, samplerate = fade_in_out('stereo.wav')
-sd.play(audio_data, samplerate)
-
+audio_data, samplerate = fade_in_out('audio1.wav')
+sf.write('faded_output.wav', audio_data, samplerate)

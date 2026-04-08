@@ -12,6 +12,7 @@
 
 import soundfile as sf
 import sounddevice as sd
+import numpy as np
 
 def mono_to_stereo(audio_file1, audio_file2):
     data1, samplerate1 = sf.read(audio_file1)
@@ -34,6 +35,6 @@ def mono_to_stereo(audio_file1, audio_file2):
         raise ValueError("Both audio files must be either mono or stereo.")
 
     return stereo_data, samplerate1
-# Play the resulting waveform using the sounddevice module.
+# export the resulting waveform as a WAV file.
 stereo_audio, samplerate = mono_to_stereo('audio1.wav', 'audio2.wav')
-sd.play(stereo_audio, samplerate)
+sf.write('stereo_output.wav', stereo_audio, samplerate)

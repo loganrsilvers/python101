@@ -1,4 +1,5 @@
-'''
+'''py -m pip install --upgrade pip
+py -m pip install scipy
 Import a sound file and this impulse response  Download this impulse response(download it from the Files page if you cannot download from this link). Apply convolution reverb using the given impule response. Export the resulting waveform as a WAV file.
 '''
 
@@ -20,4 +21,4 @@ def apply_convolution_reverb(audio_file, impulse_response_file, output_file):
     sf.write(output_file, convolved_data, samplerate_audio)
 # Apply convolution reverb using the given impule response. 
 # Export the resulting waveform as a WAV file.
-apply_convolution_reverb('audio.wav', 'IR1_click_response_dampers_down.wav', 'convolved_output.wav')
+apply_convolution_reverb('audio1.wav', 'audio2.wav', 'convolved_output.wav')
